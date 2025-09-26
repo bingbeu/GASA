@@ -51,12 +51,12 @@ datasets
 You can dowmload pre-trained model from model zoo, and put them under \<root\>/pretrained.
 To train MetaFG on datasets, run:
 ```
-python3 -m torch.distributed.launch --nproc_per_node <num-of-gpus-to-use> --master_port 12345  main.py --cfg /configs/GASA_NABirds.yaml --dataset NABirds --pretrain /raid/test/MetaFormer/pretrained_model/metafg_2_inat21_384.pth --batch-size 16 --output <output-directory> --tag <job-tag>
+python3 -m torch.distributed.launch --nproc_per_node <num-of-gpus-to-use> --master_port 12345  main.py --cfg /configs/GASA-Former.yaml --dataset NABirds --pretrain /raid/test/MetaFormer/pretrained_model/metafg_2_inat21_384.pth --batch-size 16 --output <output-directory> --tag <job-tag>
 ```
 \<dataset-name\>:inaturelist2018,cub-200,nabirds,stanfordcars
 For NABirds, run:
 ```
-CUDA_VISIBLE_DEVICES=0,1 python3 -m torch.distributed.launch --nproc_per_node 2 --master_port 12345  main.py --cfg /configs/GASA.yaml.yaml --batch-size 16 --tag NABirds --lr 5e-5 --min-lr 5e-7 --warmup-lr 5e-8 --epochs 300 --warmup-epochs 20 --dataset NABirds --pretrain /pretrained_model/metafg_2_inat21_384.pth --accumulation-steps 2 --opts DATA.IMG_SIZE 384
+CUDA_VISIBLE_DEVICES=0,1 python3 -m torch.distributed.launch --nproc_per_node 2 --master_port 12345  main.py --cfg /configs/GASA-Former.yaml --batch-size 16 --tag NABirds --lr 5e-5 --min-lr 5e-7 --warmup-lr 5e-8 --epochs 300 --warmup-epochs 20 --dataset NABirds --pretrain /pretrained_model/metafg_2_inat21_384.pth --accumulation-steps 2 --opts DATA.IMG_SIZE 384
 ```
 To evaluate model on dataset,run:
 ```
